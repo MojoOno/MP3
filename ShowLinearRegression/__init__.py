@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import plotly.express as px
 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -34,11 +35,8 @@ def show_model(data, feature_cols, target_col, test_size=0.2, random_state=42):
         plt.show()
         print(f"The model is a line \n\ty = a * x + b, or\n\ty = {a} * x + {b}")
     else:
-        plt.title('Multiple Linear Regression: Monthly Income vs Total Working Years and Job Level')
-        plt.xlabel('Total Working Years and Job Level')
-        plt.ylabel('Monthly Income')
-        plt.scatter(X, y, color='green')
-        plt.show()
+        fig = px.scatter_3d(data, x = feature_cols[0], y = feature_cols[1], z = target_col[0])
+        fig.show()
 
 
     print('Mean Absolute Error ',mae)
