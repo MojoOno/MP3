@@ -37,7 +37,9 @@ def show_model(data, feature_cols, target_col, test_size=0.2, random_state=42):
     else:
         fig = px.scatter_3d(data, x = feature_cols[0], y = feature_cols[1], z = target_col[0])
         fig.show()
-        print(f"y = B0 + B1x{feature_cols[0]} + B2x{feature_cols[1]} + ... + Bnx{feature_cols[n]} \nwhere B0 = {b}, B1 = {a[0][0]}, B2 = {a[0][1]}, ..., Bn = {a[0][n-1]}")
+        eq = " + ".join([f"{a[0][i]:.2f}*{feature_cols[i]}" for i in range(len(feature_cols))])
+        print(f"The model is a hyperplane:\n\ty = {eq} + {b[0]:.2f}")
+
 
 
     print('Mean Absolute Error ',mae)
