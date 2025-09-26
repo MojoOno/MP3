@@ -30,8 +30,6 @@ def show_decision_tree(df, target_col, test_size=0.2, random_state=42, max_depth
     - accuracy: accuracy score on the test set
     - confusion_mat: confusion matrix
     """
-    from sklearn.tree import export_graphviz
-    import graphviz
 
     # Encode categorical variables for features
     df_encoded = pd.get_dummies(df, drop_first=True)
